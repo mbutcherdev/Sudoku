@@ -1,6 +1,25 @@
-# Copied over from my initial solver_text version
+# Create the board to solve
+
+board = [
+    [7, 8, 0, 4, 0, 0, 1, 2, 0],  # 0, 0
+    [6, 0, 0, 0, 7, 5, 0, 0, 9],  # 0, 1
+    [0, 0, 0, 6, 0, 1, 0, 7, 8],  # 0, 2
+    [0, 0, 7, 0, 4, 0, 2, 6, 0],  # 1, 0
+    [0, 0, 1, 0, 5, 0, 9, 3, 0],
+    [9, 0, 4, 0, 6, 0, 0, 0, 5],
+    [0, 7, 0, 3, 0, 0, 0, 1, 2],
+    [1, 2, 0, 0, 0, 7, 4, 0, 0],
+    [0, 4, 9, 2, 0, 6, 0, 0, 7],
+]
+
+# Give the user the ability to see how the algo sorted the problem
+show_steps = False
+
+
 def solver(bd):
-    print(bd)
+    global show_steps
+    if show_steps:
+        print(bd)
 
     # Recursively solve the board, start as if it's full
     find = find_empty(bd)
@@ -82,3 +101,15 @@ def find_empty(bd):
 
     # If no blank squares, return None or False
     return None
+
+
+print("\n" + str(display_board(board)))
+
+ask = input("Do you want to show steps? (y/n): ")
+if ask == "y":
+    show_steps = True
+else:
+    show_steps = False
+solver(board)
+print("\nSolution:\n")
+print(display_board(board))
